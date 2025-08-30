@@ -7,7 +7,8 @@ PyTorch를 이용해 MobileNetV2를 파인튜닝하였고, FastAPI , Docker , Go
 ---
 
 ##  웹사이트
-https://cat-emotion-app-1016958304774.asia-northeast3.run.app/
+https://cat-emotion-app-1016958304774.asia-northeast3.run.app
+
 브라우저에서 고양이 이미지를 업로드하면 실시간으로 감정을 예측해줍니다.  
 
 ---
