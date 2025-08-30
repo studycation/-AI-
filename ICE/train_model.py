@@ -36,16 +36,14 @@ num_classes = len(train_dataset.classes)
 model = mobilenet_v2(pretrained=True)
 model.classifier[1] = nn.Linear(model.classifier[1].in_features, num_classes)
 
-# 디바이스 설정
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = model.to(device)
 
-# 손실 함수와 옵티마이저 설정
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=0.001)
 
 # 학습 루프
-for epoch in range(5):  # epoch 수 조절 가능
+for epoch in range(5): 
     model.train()
     running_loss = 0.0
     for inputs, labels in train_loader:
@@ -60,6 +58,6 @@ for epoch in range(5):  # epoch 수 조절 가능
 
     print(f'Epoch {epoch+1} Loss: {running_loss/len(train_loader):.4f}')
 
-# 저장
+
 torch.save(model.state_dict(), 'mobilenetv2_trained.pth')
-print("✅ 모델 저장 완료: mobilenetv2_trained.pth")
+
