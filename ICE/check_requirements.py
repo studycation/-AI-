@@ -21,11 +21,11 @@ missing = [pkg for pkg in required if pkg.lower() not in installed_packages]
 
 # 결과 출력
 if not missing:
-    print("✅ 모든 필수 패키지가 설치되어 있습니다.")
+    print("필수 패키지 설치 완료")
 else:
-    print("⚠️ 다음 필수 패키지들이 설치되어 있지 않습니다:\n")
+    print("다음 필수 패키지들이 설치되어 있지 않음:\n")
     for pkg in missing:
         print(f"  - {pkg}")
     
-    print("\n📦 설치하려면 다음 명령어를 입력하세요:")
+    print("\n설치하려면 명령어를 입력:")
     print("pip install " + " ".join(missing))
