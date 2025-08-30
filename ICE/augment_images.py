@@ -3,15 +3,15 @@ import os
 import random
 from torchvision import transforms
 
-# 증강 변환기 (예: 좌우 반전, 회전, 밝기 조절)
+# 증강 변환기
 augment = transforms.Compose([
-    transforms.RandomHorizontalFlip(p=1),  # 반드시 좌우 반전
+    transforms.RandomHorizontalFlip(p=1), 
     transforms.RandomRotation(10),
     transforms.ColorJitter(brightness=0.2, contrast=0.2),
 ])
 
 base_dir = "C:/ICE/train"  # 원본 train 폴더 경로
-augmented_dir = "C:/ICE/train_augmented"  # 증강 이미지 저장할 폴더
+augmented_dir = "C:/ICE/train_augmented"  # 증강 이미지 저장할 폴더를 가져와 준다.
 
 os.makedirs(augmented_dir, exist_ok=True)
 
@@ -27,10 +27,10 @@ for emotion in emotion_to_augment:
         try:
         	img = Image.open(img_path).convert("RGB")  
         except:
-        	print(f"이미지 열기 실패: {img_name}")
+        	print(f"이미지 open 실패: {img_name}")
        		continue
 
-        # 원본 이미지도 복사
+        # 원본 이미지 복사
         img.save(os.path.join(dst_folder, img_name))
 
         # 증강 이미지 2개 생성
