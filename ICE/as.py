@@ -28,7 +28,6 @@ def split_dataset(source_dir, train_dir, val_dir, split_ratio=0.8):
             os.makedirs(dst_path, exist_ok=True)
             shutil.copy(src_path, dst_path)
 
-# 사용 예:
 split_dataset(
     source_dir = 'C:/ICE/train_augmented',
     train_dir='C:/ICE/train',
