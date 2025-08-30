@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cat Emotion Classifier</title>
+</head>
+<body>
+    <h2>고양이 감정 인식</h2>
+    <input type="file" id="imageInput" />
+    <button onclick="uploadImage()">예측</button>
+    <p id="result"></p>
+
+    <script>
+        async function uploadImage() {
+            const fileInput = document.getElementById('imageInput');
+            const file = fileInput.files[0];
+            if (!file) {
+                alert("이미지를 선택하세요!");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("file", file);
+
+            try {
+                const response = await fetch("http://127.0.0.1:8000/predict", {
+                    method: "POST",
+                    body: formData
+                });
+
+                const data = await response.json();
+                document.getElementById("result").innerText = "예측 결과: " + data.prediction;
+
+            } catch (err) {
+                console.error(err);
+                alert("서버 연결 실패!");
+            }
+        }
+    </script>
+</body>
+</html>
