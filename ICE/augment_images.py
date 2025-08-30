@@ -33,10 +33,10 @@ for emotion in emotion_to_augment:
         # 원본 이미지도 복사
         img.save(os.path.join(dst_folder, img_name))
 
-        # 증강 이미지 2개 생성 (필요하면 숫자 조절 가능)
+        # 증강 이미지 2개 생성
         for i in range(2):
             augmented_img = augment(img)
             new_name = img_name.split('.')[0] + f"_aug{i}.jpg"
             augmented_img.convert("RGB").save(os.path.join(dst_folder, new_name))
 
-print("✅ 증강 이미지 생성 완료")
+
